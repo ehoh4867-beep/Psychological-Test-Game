@@ -1,0 +1,272 @@
+<!doctype html>
+	<html>
+		<head>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			
+			<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+			<meta name="description" content="Пройди психологический тест анонимно">
+			<title>
+					Пройти психологический тест онлайн
+				</title>
+				
+				<style>
+					body {
+						display: flex;
+						flex-direction: column;
+						background: #F0FFFF;
+						font-family: 'Nunito Sans';
+						margin: 0;
+					}
+					.greenDisplay {
+						display: flex;
+						margin-bottom: auto;
+						width: 100%;
+						border-radius: 0px 0px 20px 20px;
+						background: #014421;
+						justify-content: center;
+						align-items: center;
+					}
+					.helloText {
+						color: white;
+						font-size: 27px;
+						text-align: center;
+						margin-bottom: 30px;
+					}
+					.openWindowTest {
+						display: flex;
+						background: #014421;
+						padding: 14px 35px;
+						border: none;
+						color: white;
+						font-size: 20px;
+						border-radius: 23px;
+						margin-left: auto;
+						margin-right: auto;
+						margin-bottom: 1px;
+						margin-top: 35px;
+						transition: 0.3s;
+						cursor: pointer;
+					}
+					.openWindowTest:hover {
+						transform: translateY(-4px);
+						box-shadow: 2px 4px 15px rgba(0, 0, 0,  0.6);
+					}
+					.openWindowTest:active {
+						transform: scale(0.95);
+					}
+					.back {
+						display: flex;
+						background: #014421;
+						padding: 14px 105px;
+						border: none;
+						color: white;
+						box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.6);
+						font-size: 20px;
+						gap: 10px;
+						border-radius: 23px;
+						margin-left: auto;
+						margin-right: auto;
+						margin-top: 7px;
+						margin-bottom: 1px;
+						transition: 0.3s;
+						cursor: pointer;
+					}
+					.back:active {
+						transform: scale(0.95);
+					}
+					.back:hover {
+						transform: scale(0.95);
+					}
+					.start {
+						display: flex;
+						background: #014421;
+						padding: 14px 94px;
+						border: none;
+						color: white;
+						font-size: 20px;
+						gap: 10px;
+						border-radius: 23px;
+						box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.6);
+						margin-left: auto;
+						margin-right: auto;
+						margin-bottom: 1px;
+						text-decoration: none;
+						transition: 0.3s;
+						cursor: pointer;
+					}
+					.start:active {
+						transform: scale(0.95);
+					}
+					.start:hover {
+						transform: scale(0.95);
+					}
+					.Name-caption {
+						text-align: center;
+						color: black;
+						margin-top: 25px;
+						margin-bottom: 5px;
+						font-weight: 500;
+					}
+					.caption {
+						color: black;
+						font-weight: 500;
+						margin-left: 12px;
+						font-size: 22px;
+						border-left: 2px solid #014421;
+						padding-left: 13px;
+					}
+					.footer {
+						display: flex;
+						width: 100%;
+						gap: 20px;
+						background: #014421;
+						padding: 13px;
+						align-items: center;
+						border-radius: 20px 20px 0px 0px;
+						margin-top: auto;
+    					box-sizing: border-box;
+					}
+					.footer-column-text {
+						display: flex;
+						flex-direction: column;
+						margin-left: 24px;
+						gap: 15px;
+						flex: 1;
+					}
+					.footer-text {
+						color: white;
+						text-decoration: none;
+						cursor: pointer;
+						font-size: 20px;
+					}
+					.footer-text:hover {
+						text-decoration: underline;
+					}
+					.confirm {
+						display: none;
+						position: fixed;
+			    		opacity: 0;
+			    		transition: opacity 0.3s ease;
+						top: 0; left: 0;
+						width: 100%; height: 100%;
+						background: rgba(0, 0, 0, 0.7);
+						justify-content: center;
+						align-items: center;
+						min-width: 300px;
+						z-index: 1000;
+					}
+					.confirm.active {
+						display: flex;
+						opacity: 1;
+					}
+					.confirmBox {
+						display: flex;
+						background: white;
+						border-radius: 22px;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						padding: 15px;
+						gap: 12px;
+					}
+			</style>
+				
+			</head>
+		<body>
+			<div class='greenDisplay'>
+				<h1 class='helloText'>Проверка психологического состояния человека<br> за 5 минут</h1>
+			</div>
+			
+			<button class='openWindowTest'>
+				Пройти тестирование
+			</button>
+			
+			<h1 class='Name-caption'>
+				Важная<br>информация перед началом
+			</h1>
+			
+			<p class='caption'>
+				Тест носит ознакомительный характер. Он не подходит людям с повышенной тревожностью, склонностью к ипохондрии, острыми психическими состояниями или тем, кто ищет официальную медицинскую диагностику. Администрация не несет ответственность за ложные показания медицинских диагнозов
+			</p>
+			
+			<h1 class='Name-caption'>
+				Анонимны ли мои ответы в  тестировании ?
+			</h1>
+			
+			<p class='caption'>
+				Да, даже на этапе регистрации ваши данные никуда не уходят, а только записываются в ваш блокнот в браузере через localStorage. Мы собираем ваше имя и фамилию для показа результатов с вашим именем, а также для истории результатов
+			</p>
+			
+			<div class='footer'>
+				<div class='footer-column-text'>
+					<a class='footer-text' href='/'>
+						Главная<br>страница
+					</a>
+
+					<a class='footer-text' href='/faq'>
+						Частые<br>вопросы
+					</a>
+				</div>
+				
+				<div class='footer-column-text'>
+					<a class='footer-text' href='/contraindications'>
+						Противо-<br>показания
+					</a>
+					<a class='footer-text' href='/help'>
+						Поддержка
+					</a>
+				</div>
+			
+		 </div>
+		 
+		 <div class='confirm'>
+		 	<div class='confirmBox'>
+		 		<h1 class='Name-caption'>
+		 			Нужно зарегистрироваться
+		 		</h1>
+		 		
+		 		<p class='caption'>Регистрация нужна для корректного показа результатов и истории прохождений</p>
+
+		 		<button class='start'>
+		 			Регистрация
+		 		</button>
+		 		
+		 		<button class='back'>
+		 			Вернуться
+		 		</button>
+		 	</div>
+		 </div>
+		</body>
+			<script>
+				const openTest = document.querySelector('.openWindowTest');
+				const windowTest = document.querySelector('.confirm');
+				const back = document.querySelector('.back');
+				const start = document.querySelector('.start');
+				
+				openTest.addEventListener('click', (event) => {
+				const isRegistered = localStorage.getItem("isRegistered");
+				
+				if (isRegistered === 'true') {
+					window.location.href = '/test';
+					return;
+				}
+					event.stopPropagation();
+					windowTest.classList.add('active');
+				});
+				start.addEventListener('click', () => {
+					const isRegistered = localStorage.getItem('isRegistered');
+					if (isRegistered === 'true') {
+					window.location.href = '/test';
+					return;
+					}
+				window.location.href = '/registration';
+				});
+				back.addEventListener('click', () => {
+					windowTest.classList.remove('active');
+				});
+		</script>
+	</html>
