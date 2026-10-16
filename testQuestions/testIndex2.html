@@ -1,0 +1,199 @@
+<!doctype html>
+	<html>
+		<head>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+			
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			
+			<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+			<meta name="description" content="Пройди психологический тест анонимно">
+		<style>
+			body {
+			    background: #ffffff;
+			    font-family: 'Nunito Sans';
+			    margin: 0;
+			    min-height: 100vh;
+			    display: flex;
+			    flex-direction: column;
+			    padding: 20px;
+			    box-sizing: border-box;
+			}
+			.Question {
+			    color: black;
+			    text-align: center;
+			    font-size: 26px;
+			}
+			.inputs {
+				display: flex;
+				flex-direction: column;
+				gap: 9px;
+				margin-top: auto;
+				margin-bottom: 40px;
+			}
+			.cardInput {
+				display: flex;
+				justify-content: center;
+				background: #4F7942;
+				border-radius: 26px;
+				padding: 6px;
+				height: 50px;
+				align-items: center;
+				width: 98%;
+			}
+			input {
+				cursor: pointer;
+			}
+			label {
+				color: white;
+				font-size: 23px;
+			}
+			.btn {
+				display: flex;
+				justify-content: center;
+				background: #014421;
+				border-radius: 26px;
+				padding: 12px 36px;
+				align-items: center;
+				height: 50px;
+				width: 98%;
+				border: none;
+				color: white;
+				font-size: 23px;
+				cursor: pointer;
+				transition: 0.3s;
+			}
+			.img_1 {
+				width: 210px;
+				height: auto;
+				margin-left: auto;
+				margin-right: auto;
+				margin-bottom: 20px;
+			}
+			.confirm {
+				display: none;
+				position: fixed;
+ 	   		opacity: 0;
+	    		transition: opacity 0.3s ease;
+				top: 0; left: 0;
+				width: 100%; height: 100%;
+				background: rgba(0, 0, 0, 0.7);
+				justify-content: center;
+				align-items: center;
+				min-width: 300px;
+				z-index: 1000;
+			}
+			.confirm.active {
+				display: flex;
+				opacity: 1;
+			}
+			.confirmBox {
+				display: flex;
+				background: white;
+				border-radius: 22px;
+				flex-direction: column;
+				font-size: 24px;
+				justify-content: center;
+				align-items: center;
+				padding: 15px;
+				gap: 12px;
+				color: black;
+			}
+			.ok {
+				display: flex;
+				background: #4F7942;
+				padding: 14px 100px;
+				border: none;
+				color: white;
+				font-size: 20px;
+				gap: 10px;
+				border-radius: 23px;
+				box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.6);
+				margin-left: auto;
+				margin-right: auto;
+				margin-bottom: 1px;
+				text-decoration: none;
+				transition: 0.3s;
+				cursor: pointer;
+			}
+			.ok:active {
+				transform: scale(0.95);
+			}
+			.ok:hover {
+				transform: scale(0.95);
+			}
+			.pageString {
+				text-align: center;
+				color: black;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+		<body>
+		<h1 class='Question'>Как часто вы не могли остановить или контролировать беспокойство за последние 2 недели?</h1>
+			<p class='pageString'>2 / 7</p>
+			<div class='inputs'>
+			<div class='cardInput'>
+				<label>
+					<input type='radio' name='q2' value='3'>Почти каждый день
+				</label>
+			</div>
+			
+			<div class='cardInput'>
+				<label>
+					<input type='radio' name='q2' value='2'>Каждую неделю
+				</label>
+			</div>
+			
+			<div class='cardInput'>
+				<label>
+					<input type='radio' name='q2' value='1'>Несколько дней
+				</label>
+			</div>
+			
+			<div class='cardInput'>
+				<label>
+					<input type='radio' name='q2' value='0'>Никогда
+				</label>
+			</div>
+			<div class='confirm' id='window'>
+		 	<div class='confirmBox'>
+		 		<p class='Name-caption' id='windowText'>
+		 		</p>
+
+		 		<button type='button' class='ok' id='ok'>
+		 			Понятно
+		 		</button>
+		 	</div>
+		 </div>
+			<button class='ok' id='nextQuest'>Далее</button>
+			</div>
+			<script>
+			const modal = document.querySelector('#window');
+			const text = document.querySelector('#windowText');
+			let score = 0;
+			
+			const nextQuest = document.querySelector('#nextQuest');
+			
+			nextQuest.addEventListener('click', () => {
+				
+				const selectedQ2 = document.querySelector('input[name="q2"]:checked');
+				
+				if (!selectedQ2) {
+					modal.classList.add('active');
+					text.textContent = 'Выбери вариант';
+					return;
+				}
+				score = Number(selectedQ2.value);
+				localStorage.setItem('secondQuest', score);
+				window.location.href = '/testQuestion3';
+			});
+			const ok = document.querySelector('#ok');
+			
+				ok.addEventListener('click', () => {
+					modal.classList.remove('active');
+				});
+			</script>
+		</body>
+	</html>
