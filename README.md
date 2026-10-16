@@ -23,11 +23,11 @@
 ## Структура
 
 quest/
-├── applicationFile/       # основные страницы (главная, регистрация, результат)
-├── testQuestions/         # 7 файлов с вопросами теста
-├── static/                # картинки
-├── system/                # логи
-├── launch.py              # точка входа
+├── applicationFile
+├── testQuestions
+├── static
+├── system
+├── launch.py
 └── README.md
 
 ## Как запустить
