@@ -1,0 +1,108 @@
+<!doctype html>
+	<html>
+		<head>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			
+			<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+			
+			<style>
+				body {
+					background: white;
+					font-family: 'Nunito Sans';
+				}
+				.greenDisplay {
+					display: flex;
+					margin-bottom: auto;
+					width: 100%;
+					border-radius: 0px 0px 20px 20px;
+					background: #014421;
+					justify-content: center;
+					align-items: center;
+				}
+				.green-display-text {
+					color: white;
+					font-size: 27px;
+					text-align: center;
+					margin-bottom: 30px;
+				}
+				.Name-caption {
+					text-align: center;
+					color: black;
+					margin-top: 25px;
+					margin-bottom: 5px;
+					font-weight: 500;
+				}
+				.caption {
+					color: black;
+					font-weight: 500;
+					margin-left: 12px;
+					font-size: 22px;
+					border-left: 2px solid #014421;
+					padding-left: 13px;
+				}
+			</style>
+			
+			</head>
+					
+					<body>
+						
+						<div class='greenDisplay'>
+							<h1 class='green-display-text'>Тут будет твой результат</h1>
+						</div>
+						<h1 class='Name-caption'>
+							Результат(Не является медицинским диагнозом)
+						</h1>
+						
+						<p class='caption'>
+							
+						</p>
+					<script>
+						
+						const resultText = document.querySelector('.green-display-text');
+						
+						const name = localStorage.getItem('name');
+						const surname = localStorage.getItem('surname');
+						const caption = document.querySelector('.caption');
+						
+						
+						let first = Number(localStorage.getItem('firstQuest'));
+						let second = Number(localStorage.getItem('secondQuest'));
+						let three = Number(localStorage.getItem('threeQuest'));
+						let four = Number(localStorage.getItem('fourQuest'));
+						let five = Number(localStorage.getItem('fiveQuest'));
+						let six = Number(localStorage.getItem('sixQuest'));
+						let seven = Number(localStorage.getItem('sevenQuest'));
+						
+						let total_count = first + second + three + four + five + six + seven;
+						
+						resultText.innerHTML = `${name} ${surname}<br>Баллов: ${total_count} из 21`;
+
+let level, description, recommendations;
+
+if (total_count <= 4) {
+    level = 'Минимальная тревожность';
+    description = 'Ваш результат находится в пределах нормы. Выраженных признаков тревожного расстройства не обнаружено. Эмоциональный фон стабилен, вы справляетесь с повседневными задачами без значительного напряжения.';
+} else if (total_count <= 9) {
+    level = 'Лёгкая тревожность';
+    description = 'У вас присутствуют отдельные признаки тревоги, но они не мешают повседневной жизни. Возможно, вы стали чаще переживать по пустякам или замечаете лёгкое напряжение. Это нормальная реакция на стресс, но за ней стоит следить.';
+} else if (total_count <= 14) {
+    level = 'Средняя тревожность';
+    description = 'У вас заметные признаки тревожности, которые могут влиять на сон, концентрацию и общее самочувствие. Возможно, вы часто чувствуете напряжение, трудно расслабиться, а мысли возвращаются к тревожным сценариям.';
+} else {
+    level = 'Высокая тревожность';
+    description = 'У вас выраженные признаки тревожности. Такое состояние может серьёзно влиять на качество жизни: мешать работе, учёбе, отношениям, вызывать проблемы со сном и физическим здоровьем. Это не «слабость» — это состояние, с которым можно и нужно работать.';
+}
+
+caption.innerHTML = `
+    <strong>${level}</strong><br><br>
+    ${description}<br><br>
+    <strong>Что делать:</strong><br>
+    <small>Тест носит ознакомительный характер и не заменяет консультацию специалиста.</small>
+`;
+					</script>
+					</body>
+				</html>
