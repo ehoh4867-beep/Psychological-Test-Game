@@ -1,0 +1,205 @@
+<!doctype html>
+	<html>
+		<head>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+			
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			
+			<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+			<meta name="description" content="Пройди психологический тест анонимно">
+				
+				<style>
+					body {
+						display: flex;
+						flex-direction: column;
+						background: #F0FFFF;
+						font-family: 'Nunito Sans';
+						margin: 0;
+					}
+					.registrationText {
+						text-align: center;
+						color: white;
+						font-size: 32px;
+						padding-bottom: 12px;
+					}
+					.greenDisplay {
+						display: flex;
+						margin-bottom: auto;
+						width: 100%;
+						height: 145px;
+						border-radius: 0px 0px 20px 20px;
+						background: #014421;
+						justify-content: center;
+						align-items: center;
+					}
+					.inputName {
+						font-size: 22px;
+						color: black;
+					}
+					.input {
+						padding: 9px;
+						background: none;
+						font-size: 19px;
+						border: 2px solid black;
+						border-radius: 22px;
+					}
+					.form {
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+					}
+					.confirmBtn {
+						display: flex;
+						background: #014421;
+						padding: 14px 35px;
+						border: none;
+						color: white;
+						font-size: 20px;
+						border-radius: 23px;
+						margin-left: auto;
+						margin-right: auto;
+						margin-bottom: 1px;
+						margin-top: 35px;
+						transition: 0.3s;
+						cursor: pointer;
+					}
+					.confirmBtn:active {
+						transform: scale(0.95);
+					}
+					.confirm {
+						display: none;
+						position: fixed;
+			    		opacity: 0;
+			    		transition: opacity 0.3s ease;
+						top: 0; left: 0;
+						width: 100%; height: 100%;
+						background: rgba(0, 0, 0, 0.7);
+						justify-content: center;
+						align-items: center;
+						min-width: 300px;
+						z-index: 1000;
+					}
+					.confirm.active {
+						display: flex;
+						opacity: 1;
+					}
+					.confirmBox {
+						display: flex;
+						background: white;
+						border-radius: 22px;
+						flex-direction: column;
+						font-size: 24px;
+						justify-content: center;
+						align-items: center;
+						padding: 15px;
+						gap: 12px;
+						color: black;
+					}
+					.start {
+						display: flex;
+						background: #014421;
+						padding: 14px 64px;
+						border: none;
+						color: white;
+						font-size: 20px;
+						gap: 10px;
+						border-radius: 23px;
+						box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.6);
+						margin-left: auto;
+						margin-right: auto;
+						margin-bottom: 1px;
+						text-decoration: none;
+						transition: 0.3s;
+						cursor: pointer;
+					}
+					.start:active {
+						transform: scale(0.95);
+					}
+					.start:hover {
+						transform: scale(0.95);
+					}
+					
+				</style>
+			</head>
+			
+			<body>
+				<div class='greenDisplay'>
+					<h1 class='registrationText'>
+						Создание
+						<br>
+						аккаунта
+					</h1>
+				</div>
+				
+				<div class='form'>
+					<h1 class='inputName'>
+						Имя
+					</h1>
+					<input id='name' class='input' type='text' placeholder='Джон'>
+					
+					<h1 class='inputName'>
+						Фамилия(необязательно)
+					</h1>
+					
+					<input id='surname' class='input' type='text' placeholder='Уилсон'>
+					<button type='button' class='confirmBtn' id='confirm'>
+						Создать аккаунт
+					</button>
+					
+					<label>
+						<input style='margin-left: 50px; cursor: pointer;' type='checkbox' id='checkBox'>Я согласен(согласна) с <a href="/terms" target="_blank" onclick="event.stopPropagation()"> пользовательским соглашением</a>
+					</label>
+				</div>
+				
+				<div class='confirm' id='errorWindow'>
+		 	<div class='confirmBox'>
+		 		<p class='Name-caption' id='errorText'>
+		 		</p>
+
+		 		<button type='button' class='start' id='ok'>
+		 			Понятно
+		 		</button>
+		 	</div>
+		 </div>
+	<script>
+    const create = document.querySelector('#confirm');
+    const errorWindow = document.querySelector('#errorWindow');
+    const errorText = document.querySelector('#errorText');
+    const checkBox = document.querySelector('#checkBox');
+    const ok = document.querySelector('#ok');
+
+    ok.addEventListener('click', () => {
+        errorWindow.classList.remove('active');
+    });
+
+    create.addEventListener('click', () => {
+        const name = document.getElementById('name');
+        const surname = document.getElementById('surname');
+
+        if (!checkBox.checked) {
+            errorWindow.classList.add('active');
+            errorText.textContent = 'Нужно согласиться с соглашением';
+            return;
+        }
+
+        if (name.value.trim().length === 0) {
+            errorWindow.classList.add('active');
+            errorText.textContent = 'Поле "Имя" нужно заполнить';
+            return;
+        }
+        
+        localStorage.setItem('surname', surname.value.trim() || '');
+        localStorage.setItem('isRegistered', 'true');
+        localStorage.setItem('name', name.value);
+        errorWindow.classList.add('active');
+        errorText.textContent = 'Регистрация прошла успешно';
+        setTimeout(function() {
+            window.location.href = '/test';
+        }, 1500);
+    });
+</script>
+	</body>
+			</html>
